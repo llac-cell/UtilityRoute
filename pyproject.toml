@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "utilityroute"
+version = "0.2.0"
+description = "Reproducible UtilityRoute RGB-T UAV perception experiments"
+requires-python = ">=3.12"
+dependencies = [
+  "torch==2.8.0",
+  "torchvision==0.23.0",
+  "ultralytics==8.3.187",
+  "albumentations==2.0.8",
+  "numpy>=2.1",
+  "pandas==2.3.2",
+  "PyYAML==6.0.2",
+  "Pillow>=11",
+  "scipy==1.16.1",
+]
+
+[project.optional-dependencies]
+tracking = ["filterpy==1.4.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

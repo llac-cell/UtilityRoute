@@ -1,0 +1,6 @@
+experiment_id: d3_static_fusion_seed42
+method_config: ../method_v1.yaml
+seed: 42
+stage: static_fusion_baseline
+device: 0
+notes: First full single-seed baseline after smoke validation.

@@ -1,0 +1,53 @@
+project:
+  name: utilityroute
+  contract: manuscript_20261108
+  seeds: [42, 123, 3407, 2026, 9001]
+  manuscript: ../../revision_minimal_20261105/manuscript_clean/main.tex
+data:
+  image_size: [512, 640]
+  batch_image_size: 640
+  crop_top: 100
+  classes: [car, truck, bus, van, freight_car]
+  split_protocol: local_scene_disjoint_v1
+  split_ratio: [0.70, 0.15, 0.15]
+  expected_pairs: {train: 1028, val: 221, test: 220}
+  expected_scenes: {train: 25, val: 19, test: 18}
+model:
+  detector: yolov8s-obb
+  cross_detector: yolo11s-obb
+  pretrained: true
+  fusion_strides: [8, 16]
+  top_k: 2
+  experts: [rgb_illumination, thermal_contrast, weather_noise, alignment]
+router:
+  beta: 0.015
+  normalized_cost: [0.55, 0.55, 0.75, 1.0]
+  lambda_utility: 1.0
+  lambda_rank: 0.1
+  lambda_balance: 0.01
+  utility_epsilon: 1.0e-6
+  ranking_ignore_threshold: 0.01
+  ranking_margin: 0.05
+  allow_identity: true
+  use_spatial_risk: false
+  spatial_grid_size: 4
+training:
+  # Stage budgets retained from the original implementation, not inferred from
+  # the manuscript's 80 recorded learning-curve epochs. Override via --epochs.
+  epochs: 100
+  stage_epochs: {baseline: 100, dual: 100, experts: 30, router: 30}
+  batch: 12
+  workers: 8
+  optimizer: AdamW
+  learning_rate: 0.001
+  router_learning_rate: 0.0005
+  lrf: 0.01
+  momentum: 0.937
+  weight_decay: 0.0005
+  max_grad_norm: 10.0
+  warmup_epochs: 3
+  utility_warmup_epochs: 2
+  patience: 20
+  utility_patience: 10
+  amp: true
+  deterministic: true

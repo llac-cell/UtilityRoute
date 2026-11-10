@@ -1,0 +1,7 @@
+path: ../../data/dronevehicle_rgb
+thermal_root: ../../data/dronevehicle_thermal
+train: images/train
+val: images/val
+test: images/test
+channels: 4
+names: {0: car, 1: truck, 2: bus, 3: van, 4: freight_car}

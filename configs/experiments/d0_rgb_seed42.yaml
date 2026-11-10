@@ -1,0 +1,6 @@
+experiment_id: d0_rgb_only_seed42
+method_config: ../method_v1.yaml
+seed: 42
+stage: rgb_only_baseline
+device: 0
+notes: RGB-only detector control; also used to validate the OBB training pipeline.

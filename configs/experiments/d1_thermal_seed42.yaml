@@ -1,0 +1,6 @@
+experiment_id: d1_thermal_only_seed42
+method_config: ../method_v1.yaml
+seed: 42
+stage: thermal_only_baseline
+device: 0
+notes: Thermal-only detector control with repeated grayscale input channels.
