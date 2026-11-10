@@ -1,1 +1,2 @@
 # UtilityRoute
+UtilityRoute is a task-aware utility routing framework for efficient RGB-T UAV object detection, which adaptively selects appropriate expert detectors according to predicted utility scores to reduce inference latency while preserving detection performance. The core code has been released in this repository, and we will further organize and polish this project after the paper is published.
